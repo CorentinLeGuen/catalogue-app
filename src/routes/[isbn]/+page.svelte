@@ -57,6 +57,8 @@
 		<p><strong>Résumé :</strong> {book.summary}</p>
 	{/if}
 
+	<a href='{`/${isbn}/edit`}'>Modifier le livre</a>
+
 	<button on:click={handleDelete} style="color: red;">🗑 Supprimer ce livre</button>
 	<br />
 	<a href="/">⬅ Retour au catalogue</a>
