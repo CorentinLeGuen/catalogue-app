@@ -6,8 +6,7 @@ export type Book = {
     publicationDate: string; // ISO ex. "2024-04-28"
     summary?: string;
     pageCount: number;
-  };
-  
+};
 
 export async function fetchBooks(): Promise<Book[]> {
     const res = await fetch('/catalogue/books');
@@ -34,9 +33,31 @@ export async function deleteBook(isbn: string): Promise<void> {
         method: 'DELETE',
     });
 
-    console.log(res);
-
     if (!res.ok) {
         throw new Error(`Échec de la suppression du livre (ISBN: ${isbn})`);
     }
+}
+
+export async function searchBookByTitleOrAuthor(query: string): Promise<Book[]> {
+	const [byTitle, byAuthor] = await Promise.all([
+		fetch(`/catalogue/books/search?title=${encodeURIComponent(query)}`),
+		fetch(`/catalogue/books/search?author=${encodeURIComponent(query)}`)
+	]);
+
+    const [titleResults, authorResults] = await Promise.all([
+		byTitle.json(),
+		byAuthor.json()
+	]);
+
+    const seen = new Set<string>();
+	const combined: Book[] = [];
+
+	for (const book of [...titleResults, ...authorResults]) {
+		if (!seen.has(book.isbn)) {
+			seen.add(book.isbn);
+			combined.push(book);
+		}
+	}
+
+	return combined;
 }

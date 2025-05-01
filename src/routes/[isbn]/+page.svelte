@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
+	import { Alert, Button, Spinner } from 'flowbite-svelte';
+	import { InfoCircleSolid, ReplySolid } from 'flowbite-svelte-icons';
 	import { fetchBookByIsbn, deleteBook, type Book } from '$lib/index';
 	import { goto } from '$app/navigation';
 
@@ -33,35 +35,64 @@
 	}
 </script>
 
-{#if loading}
-	<p>Chargement…</p>
-{:else if err}
-	<p style="color: red;">Erreur : {err}</p>
-{:else if book}
-	<h1>{book.title}</h1>
-	<p><strong>ISBN :</strong> {book.isbn}</p>
+<div class="mx-auto max-w-full sm:max-w-3/4 md:max-w-2/3 xl:max-w-1/2 2xl:max-w-1/3">
+	{#if loading}
+		<div class="p-6 text-center">
+			<Spinner class="me-4"/> Chargement du livre avec l'ISBN <strong>{isbn}</strong> ...
+		</div>
+	{:else if err}
+		<Alert color="red" rounded={false} class="border-t-4">
+			<InfoCircleSolid slot="icon" class="h-5 w-5" />
+			<p class="font-medium">Désolé, quelque chose s'est mal passé.</p>
+			<span>{err}</span>
+		</Alert>
 
-	{#if book.authors?.length}
-		<p><strong>Auteur(s) :</strong> {book.authors.join(', ')}</p>
+		<div class="flex justify-left mt-8">
+			<Button outline href="/" class="x-auto px-24" color="light">
+				<ReplySolid class="me-4"/>Retour au catalogue
+			</Button>
+		</div>
+	{:else if book}
+		<h1 class="text-4xl font-extrabold text-center">{book.title}</h1>
+		<p><strong>ISBN :</strong> {book.isbn}</p>
+		{#if book.authors?.length}
+			<h3 class="font-extrabold">Auteur·e·s</h3>
+			{#each book.authors as author}
+				<p>{author}</p>
+			{/each}
+		{/if}
+		{#if book.publicationDate}
+			<p><strong>Publié le :</strong> {new Date(book.publicationDate).toLocaleDateString()}</p>
+		{/if}
+
+		{#if book.pageCount}
+			<p><strong>Nombre de pages :</strong> {book.pageCount}</p>
+		{/if}
+
+		{#if book.summary}
+			<p><strong>Résumé :</strong> {book.summary}</p>
+		{/if}
+
+		<div class="flex mt-4 space-x-2">
+			<Button href="{`/${isbn}/edit`}" class="grow" color="blue" outline>Modifier le livre</Button>
+			<Button on:click={handleDelete} href="" outline class="cursor-pointer" color="red">Supprimer le livre</Button>
+		</div>
+			
+		<div class="flex justify-left mt-8">
+			<Button outline href="/" class="x-auto px-24" color="light">
+				<ReplySolid class="me-4"/>Retour au catalogue
+			</Button>
+		</div>
+	{:else}
+		<Alert color="red" rounded={false} class="border-t-4">
+			<InfoCircleSolid slot="icon" class="h-5 w-5" />
+			<p class="font-medium">Désolé, le livre est introuvable</p>
+		</Alert>
+
+		<div class="flex justify-left mt-8">
+			<Button outline href="/" class="x-auto px-24" color="light">
+				<ReplySolid class="me-4"/>Retour au catalogue
+			</Button>
+		</div>
 	{/if}
-
-	{#if book.publicationDate}
-		<p><strong>Publié le :</strong> {new Date(book.publicationDate).toLocaleDateString()}</p>
-	{/if}
-
-	{#if book.pageCount}
-		<p><strong>Nombre de pages :</strong> {book.pageCount}</p>
-	{/if}
-
-	{#if book.summary}
-		<p><strong>Résumé :</strong> {book.summary}</p>
-	{/if}
-
-	<a href='{`/${isbn}/edit`}'>Modifier le livre</a>
-
-	<button on:click={handleDelete} style="color: red;">🗑 Supprimer ce livre</button>
-	<br />
-	<a href="/">⬅ Retour au catalogue</a>
-{:else}
-	<p>Livre introuvable.</p>
-{/if}
+</div>

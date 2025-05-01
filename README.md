@@ -1,13 +1,11 @@
-# 📚 Catalogue de Livres — Frontend SvelteKit
+# 📚 Catalogue de Livres
 
 Ce projet est une application frontend développée avec **SvelteKit**. Elle permet de consulter, ajouter et supprimer des livres.
 
 ## ✨ Fonctionnalités
 
-- [x] Liste des livres disponibles
-- [x] Ajout de nouveaux livres via un formulaire intelligent
-- [x] Suppression de livres existants
-- [x] Remplissage automatique à partir de l’ISBN (via [OpenLibrary API](https://openlibrary.org/developers/api))
+- [x] Consulter, ajouter, modifier et supprimer des livres
+- [x] Ajout des champs d'un livre automatique à partir de l’ISBN (via [OpenLibrary API](https://openlibrary.org/developers/api)).
 - [x] Génération d'un résumé automatique (via [OpenAPI](https://openai.com))
 
 ## ⚙️ Installation & configuration
@@ -21,3 +19,6 @@ npm install
 npm run dev
 ```
 
+## 📜 LICENSES
+
+[Les logos SVG](static/) viennent de [SVGrepo.com](svgrepo.com).
