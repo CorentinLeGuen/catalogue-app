@@ -2,6 +2,8 @@
 
 Ce projet est une application frontend développée avec **SvelteKit**. Elle permet de consulter, ajouter et supprimer des livres.
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/476a6acb-dbae-4e86-b7b2-383b00825e7b/deploy-status)](https://app.netlify.com/sites/catalogue-lexum/deploys)
+
 ## ✨ Fonctionnalités
 
 - [x] Consulter, ajouter, modifier et supprimer des livres
