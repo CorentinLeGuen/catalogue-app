@@ -1,0 +1,2 @@
+/catalogue/*  https://catalogue-production-54d4.up.railway.app/api/:splat       200
+/ai/*         https://catalogue-summarizer-production.up.railway.app/:splat     200
