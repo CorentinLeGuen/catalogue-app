@@ -23,4 +23,4 @@ npm run dev
 
 ## 📜 LICENSES
 
-[Les logos SVG](static/) viennent de [SVGrepo.com](svgrepo.com).
+[Les logos SVG](static/) viennent de [SVGrepo.com](https://svgrepo.com).

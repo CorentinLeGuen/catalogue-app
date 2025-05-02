@@ -18,6 +18,11 @@ export default defineConfig({
 				target: process.env.VITE_API_CATALOGUE,
 				changeOrigin: true,
 				rewrite: path => path.replace(/^\/catalogue/, '')
+			},
+			'/chatbot': {
+				target: process.env.VITE_API_CATALOGUE_CHATBOT,
+				changeOrigin: true,
+				rewrite: path => path.replace(/^\/chatbot/, '')
 			}
 		}
 	}
