@@ -36,10 +36,10 @@
             if (data.response) {
                 messages.update(msgs => [...msgs, { role: 'assistant', content: data.response }]);
             } else {
-                messages.update(msgs => [...msgs, { role: 'assistant', content: 'Erreur du serveur...' }]);
+                messages.update(msgs => [...msgs, { role: 'assistant', content: 'Notre agent n\'est pas disponible pour le moment...' }]);
             }
         } catch (err) {
-            messages.update(msgs => [...msgs, { role: 'assistant', content: 'Erreur de connexion.' }]);
+            messages.update(msgs => [...msgs, { role: 'assistant', content: 'Notre agent est en maintenance, réessayez plus tard.' }]);
         }
         isWaitingMessage = false;
         await tick();
@@ -49,7 +49,7 @@
 
 {#if visible}
     <form on:submit|preventDefault={sendMessage} class="">
-        <div class="fixed bottom-10 right-4 z-50 bg-gray-50 dark:bg-gray-700 rounded-lg shadow-lg w-full max-w-md h-1/2 border border-gray-100 dark:border-gray-900">
+        <div class="fixed bottom-10 right-4 z-50 bg-gray-50 dark:bg-gray-700 rounded-lg shadow-lg w-11/12 max-w-md h-1/2 border border-gray-100 dark:border-gray-900">
             <div class="p-2 border-b border-gray-300 dark:border-gray-600">
                 <h2 class="text-sm font-semibold text-center text-gray-600 dark:text-gray-200">Assistant Bibliothécaire ChatXUM</h2>
                 <a href="#chatbot" on:click={onClose} class="absolute top-2 right-2">
