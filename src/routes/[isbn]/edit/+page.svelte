@@ -117,7 +117,7 @@
 		</Alert>
 	{:else if book}
 		<Heading tag="h1" class="mb-4" customSize="text-center text-4xl font-extrabold">
-			Modifier le libre <a href={`/${isbn}`} class="text-primary-700 dark:text-primary-500"
+			Modifier le livre <a href={`/${isbn}`} class="text-primary-700 dark:text-primary-500"
 				>{isbn}</a
 			>
 		</Heading>

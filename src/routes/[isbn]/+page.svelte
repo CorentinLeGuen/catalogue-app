@@ -53,29 +53,35 @@
 			</Button>
 		</div>
 	{:else if book}
-		<h1 class="text-4xl font-extrabold text-center">{book.title}</h1>
-		<p><strong>ISBN :</strong> {book.isbn}</p>
-		{#if book.authors?.length}
-			<h3 class="font-extrabold">Auteur·e·s</h3>
-			{#each book.authors as author}
-				<p>{author}</p>
-			{/each}
-		{/if}
-		{#if book.publicationDate}
-			<p><strong>Publié le :</strong> {new Date(book.publicationDate).toLocaleDateString()}</p>
-		{/if}
+		<div class="p-8 rounded-2xl shadow-xl">
+			<div class="space-y-4">
+			<h1 class="text-4xl font-extrabold text-center border-b pb-4 border-b-gray-300 dark:border-b-gray-800">{book.title}</h1>
+				<p><strong>ISBN :</strong> {book.isbn}</p>
+				{#if book.authors?.length}
+					<h3 class="font-extrabold">Auteur.ice(s)</h3>
+					{#each book.authors as author}
+						<p>{author}</p>
+					{/each}
+				{/if}
+				<div class="grid grid-cols-2">
+					{#if book.publicationDate}
+						<p><strong>Publié le :</strong> {new Date(book.publicationDate).toLocaleDateString()}</p>
+					{/if}
 
-		{#if book.pageCount}
-			<p><strong>Nombre de pages :</strong> {book.pageCount}</p>
-		{/if}
+					{#if book.pageCount}
+						<p><strong>Nombre de pages :</strong> {book.pageCount}</p>
+					{/if}
+				</div>
 
-		{#if book.summary}
-			<p><strong>Résumé :</strong> {book.summary}</p>
-		{/if}
+				{#if book.summary}
+					<p class="text-justify mb-8"><strong>Résumé :</strong> {book.summary}</p>
+				{/if}
+			</div>
 
-		<div class="flex mt-4 space-x-2">
-			<Button href="{`/${isbn}/edit`}" class="grow" color="blue" outline>Modifier le livre</Button>
-			<Button on:click={handleDelete} href="" outline class="cursor-pointer" color="red">Supprimer le livre</Button>
+			<div class="flex mt-4 space-x-2">
+				<Button href="{`/${isbn}/edit`}" class="grow" color="blue" outline>Modifier le livre</Button>
+				<Button on:click={handleDelete} href="" outline class="cursor-pointer" color="red">Supprimer le livre</Button>
+			</div>
 		</div>
 			
 		<div class="flex justify-left mt-8">

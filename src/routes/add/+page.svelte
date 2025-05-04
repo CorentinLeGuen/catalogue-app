@@ -140,7 +140,7 @@
 
 		<div class="mb-2">
 			<FloatingLabelInput bind:value={authors} placeholder="Auteur(s) séparés par une virgule" required>
-				Auteur(s) séparés par une virgule
+				Auteur.ice(s) séparés par une virgule
 			</FloatingLabelInput>
 		</div>
 
@@ -166,7 +166,7 @@
 			</Button>
 		{/if}
 
-		<Button type="submit" outline class="w-full">
+		<Button type="submit" outline class="w-full cursor-pointer">
 			Ajouter
 		</Button>
 	</form>
