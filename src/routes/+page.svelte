@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { fetchBooks, type Book } from '$lib/index';
-	import { Alert, Heading, Card, Hr, P, Spinner, ButtonGroup, Button } from 'flowbite-svelte';
-	import { InfoCircleSolid, GithubSolid, MailBoxSolid, BookSolid, ArrowRightOutline } from 'flowbite-svelte-icons';
+	import { Alert, Heading, Hr, P, Spinner, ButtonGroup, Button } from 'flowbite-svelte';
+	import { InfoCircleSolid, MailBoxSolid, BookSolid } from 'flowbite-svelte-icons';
 	import SearchBook from '$lib/components/SearchBook.svelte';
 
 	let books: Book[] = [];
@@ -20,30 +20,30 @@
 	});
 </script>
 
-<Heading tag="h1" class="mb-4" customSize="text-center text-4xl font-extrabold">Catalogue de livres</Heading>
+<Heading tag="h1" class="mb-4" customSize="text-center text-4xl md:text-8xl font-extrabold"><span class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400 dark:to-blue-700 dark:from-yellow-500 drop-shadow-xl/25">Catalogue de livres</span></Heading>
 
 <div class="paragraph my-4">
 	<P class="text-center text-2xl">
 		Consulter votre collection de livres: recherchez, ajoutez, modifiez ou supprimer des livres !
 	</P>
 	<P class="text-center text-2xl">
-		Laissez notre service vous aider à remplir les informations de votre référence. Laissez nos agents IA vous aider dans votre processus !
+		Laissez notre service vous aider à remplir les informations de votre référence. Laissez nos agents IA vous aider dans votre aventure !
 	</P>
 </div>
 
 <div class="flex justify-center mt-8">
 	<ButtonGroup class="x-auto *:ring-alternative-500!">
 		<Button href="https://github.com/CorentinLeGuen/catalogue-app" target="_blank" color="yellow">
-			<GithubSolid class="me-2"/>
-			SvelteKit app
+			Svelte app
 		</Button>
 		<Button href="https://github.com/CorentinLeGuen/catalogue-summarizer" target="_blank" color="green">
-			<GithubSolid class="me-2"/>
-			Python app - AI agent
+			AI agent summarizer
+		</Button>
+		<Button href="https://github.com/CorentinLeGuen/catalogue-chatbot" target="_blank" color="purple">
+			AI agent chatbot
 		</Button>
 		<Button href="https://github.com/CorentinLeGuen/catalogue" target="_blank" color="blue">
-			<GithubSolid class="me-2"/>
-			Java, Spring Boot app
+			Backend API app
 		</Button>
 	</ButtonGroup>
 </div>

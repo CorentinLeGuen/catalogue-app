@@ -25,7 +25,7 @@
     </form>
 </div>
 
-<div class="flex flex-wrap justify-center gap-2">
+<div class="flex flex-wrap justify-center gap-0 md:gap-2">
     {#each books as book}
         <Card class="space-y-2 w-1/2 sm:w-1/2 md:w-1/3">
             <h5 class="mb-2 text-2xl font-bold tracking-tight">{book.title}</h5>
